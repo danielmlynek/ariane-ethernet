@@ -106,11 +106,29 @@ end else if (TARGET == "ALTERA") begin
         .POWER_UP_HIGH("OFF")
     )
     altddio_in_inst (
+`ifdef _VCP // PAK2591
+        .aset(ariane_pkg::ALDEC_1B0),
+
+`else
         .aset(1'b0),
+
+`endif
         .datain(d),
+`ifdef _VCP // PAK2591
+        .inclocken(ariane_pkg::ALDEC_1B1),
+
+`else
         .inclocken(1'b1),
+
+`endif
         .inclock(clk),
+`ifdef _VCP // PAK2591
+        .aclr(ariane_pkg::ALDEC_1B0),
+
+`else
         .aclr(1'b0),
+
+`endif
         .dataout_h(q1_int),
         .dataout_l(q2)
     );

@@ -241,7 +241,13 @@ eth_mac_1g_inst (
     .gmii_txd(mac_gmii_txd),
     .gmii_tx_en(mac_gmii_tx_en),
     .gmii_tx_er(mac_gmii_tx_er),
+`ifdef _VCP // PAK2591
+    .rx_clk_enable(ariane_pkg::ALDEC_1B1),
+
+`else
     .rx_clk_enable(1'b1),
+
+`endif
     .tx_clk_enable(mac_gmii_tx_clk_en),
     .rx_mii_select(rx_mii_select_3),
     .tx_mii_select(tx_mii_select_3),
