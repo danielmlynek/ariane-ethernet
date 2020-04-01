@@ -105,30 +105,12 @@ end else if (TARGET == "ALTERA") begin
         .OE_REG("UNUSED")
     )
     altddio_out_inst (
-`ifdef _VCP // PAK2591
-        .aset(ariane_pkg::ALDEC_1B0),
-
-`else
         .aset(1'b0),
-
-`endif
         .datain_h(d1),
         .datain_l(d2),
-`ifdef _VCP // PAK2591
-        .outclocken(ariane_pkg::ALDEC_1B1),
-
-`else
         .outclocken(1'b1),
-
-`endif
         .outclock(clk),
-`ifdef _VCP // PAK2591
-        .aclr(ariane_pkg::ALDEC_1B0),
-
-`else
         .aclr(1'b0),
-
-`endif
         .dataout(q)
     );
 end else begin
